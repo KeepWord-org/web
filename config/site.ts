@@ -1,3 +1,10 @@
+/**
+ * @deprecated This config file is deprecated.
+ * Use getSiteConfig() from @/lib/site-config instead.
+ * 
+ * This file is kept temporarily for reference during migration.
+ * It will be removed after the migration is complete.
+ */
 export const siteConfig = {
   name: "Launch UI",
   url: "https://launchuicomponents.com",
