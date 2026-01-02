@@ -20,6 +20,7 @@ export default function Pricing({
       name: "Free",
       description: "For everyone starting out on a website for their big idea",
       price: 0,
+      showDiscounts: true,
       priceNote: "Free and open-source forever.",
       cta: {
         variant: "glow",
@@ -38,7 +39,10 @@ export default function Pricing({
       name: "Pro",
       icon: <User className="size-4" />,
       description: "For early-stage founders, solopreneurs and indie devs",
-      price: 149,
+      price: 75,
+      originalPrice: 149,
+      discountCode: "BLACKFRIDAY",
+      showDiscounts: true,
       priceNote: "Lifetime access. Free updates. No recurring fees.",
       cta: {
         variant: "default",
@@ -57,7 +61,10 @@ export default function Pricing({
       name: "Pro Team",
       icon: <Users className="size-4" />,
       description: "For teams and agencies working on cool products together",
-      price: 749,
+      price: 499,
+      originalPrice: 749,
+      discountCode: "BLACKFRIDAY",
+      showDiscounts: true,
       priceNote: "Lifetime access. Free updates. No recurring fees.",
       cta: {
         variant: "default",
@@ -98,6 +105,9 @@ export default function Pricing({
                 icon={plan.icon}
                 description={plan.description}
                 price={plan.price}
+                originalPrice={plan.originalPrice}
+                discountCode={plan.discountCode}
+                showDiscounts={plan.showDiscounts}
                 priceNote={plan.priceNote}
                 cta={plan.cta}
                 features={plan.features}
@@ -111,3 +121,4 @@ export default function Pricing({
     </Section>
   );
 }
+

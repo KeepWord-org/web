@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 
 import { Section } from "../../ui/section";
 
@@ -9,11 +10,15 @@ interface StatItemProps {
 }
 
 interface StatsProps {
+  title?: string;
+  description?: string;
   items?: StatItemProps[] | false;
   className?: string;
 }
 
-export default function Stats({
+export default function StatsGrid({
+  title = "A powerful React library for websites",
+  description = "A comprehensive collection of components written in modern React, Typescript and Tailwind CSS.",
   items = [
     {
       label: "used by",
@@ -41,10 +46,18 @@ export default function Stats({
   className,
 }: StatsProps) {
   return (
-    <Section className={className}>
-      <div className="container mx-auto max-w-[960px]">
+    <Section className={cn("w-full overflow-hidden", className)}>
+      <div className="max-w-container mx-auto flex flex-col gap-8 md:flex-row md:gap-20">
+        <div className="flex flex-col gap-8">
+          <h2 className="max-w-[500px] text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
+            {title}
+          </h2>
+          <p className="text-md text-muted-foreground max-w-[540px] font-medium text-pretty sm:text-xl">
+            {description}
+          </p>
+        </div>
         {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
+          <div className="grid max-w-[500px] grid-cols-2 gap-8 p-4 md:gap-x-20 md:gap-y-12">
             {items.map((item, index) => (
               <div
                 key={index}

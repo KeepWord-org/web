@@ -2,18 +2,11 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../../ui/accordion";
 import { Section } from "../../ui/section";
 
 interface FAQItemProps {
   question: string;
   answer: ReactNode;
-  value?: string;
 }
 
 interface FAQProps {
@@ -147,22 +140,19 @@ export default function FAQ({
 }: FAQProps) {
   return (
     <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-8">
-        <h2 className="text-center text-3xl font-semibold sm:text-5xl">
+      <div className="max-w-container mx-auto flex flex-col items-center gap-8 md:flex-row md:items-start">
+        <h2 className="max-w-[480px] text-center text-3xl leading-tight font-semibold sm:text-5xl md:text-left md:leading-tight">
           {title}
         </h2>
         {items !== false && items.length > 0 && (
-          <Accordion type="single" collapsible className="w-full max-w-[800px]">
+          <div className="flex flex-col gap-4 py-6">
             {items.map((item, index) => (
-              <AccordionItem
-                key={index}
-                value={item.value || `item-${index + 1}`}
-              >
-                <AccordionTrigger>{item.question}</AccordionTrigger>
-                <AccordionContent>{item.answer}</AccordionContent>
-              </AccordionItem>
+              <article key={index} className="flex flex-col gap-2">
+                <h3 className="text-lg font-semibold">{item.question}</h3>
+                {item.answer}
+              </article>
             ))}
-          </Accordion>
+          </div>
         )}
       </div>
     </Section>

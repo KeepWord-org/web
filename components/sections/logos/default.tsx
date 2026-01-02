@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-import { siteConfig } from "@/config/site";
 
 import Figma from "../../logos/figma";
 import React from "../../logos/react";
@@ -22,12 +21,12 @@ export default function Logos({
   title = "Built with industry-standard tools and best practices",
   badge = (
     <Badge variant="outline" className="border-brand/30 text-brand">
-      Last updated: {siteConfig.stats.updated}
+      Last updated: 1000
     </Badge>
   ),
   logos = [
     <Logo key="figma" image={Figma} name="Figma" />,
-    <Logo key="react" image={React} name="React" version="19.2.1" />,
+    <Logo key="react" image={React} name="React" version="19.2.0" />,
     <Logo
       key="typescript"
       image={TypeScript}
@@ -38,7 +37,7 @@ export default function Logos({
       key="shadcn"
       image={ShadcnUi}
       name="Shadcn/ui"
-      version="3.5.1"
+      version="3.4.2"
       badge="New"
     />,
     <Logo key="tailwind" image={Tailwind} name="Tailwind" version="4.1.14" />,

@@ -2,13 +2,13 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 
+import { Section } from "../../ui/section";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../ui/accordion";
-import { Section } from "../../ui/section";
+} from "../../ui/accordion-raised";
 
 interface FAQItemProps {
   question: string;
@@ -26,14 +26,13 @@ export default function FAQ({
   title = "Questions and Answers",
   items = [
     {
-      question:
-        "Why building a great landing page is critical for your business?",
+      question: "Why good design is critical for your business?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
             In today&apos;s AI-driven world, standing out is harder than ever.
-            While anyone can build a product, a professional landing page makes
-            the difference between success and failure.
+            While anyone can build a product, a professional unique design
+            language makes the difference between success and failure.
           </p>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
             Launch UI helps you ship faster without compromising on quality.
@@ -147,7 +146,7 @@ export default function FAQ({
 }: FAQProps) {
   return (
     <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-8">
+      <div className="max-w-container mx-auto flex flex-col items-center gap-12">
         <h2 className="text-center text-3xl font-semibold sm:text-5xl">
           {title}
         </h2>

@@ -13,7 +13,7 @@ interface StatsProps {
   className?: string;
 }
 
-export default function Stats({
+export default function StatsTiles({
   items = [
     {
       label: "used by",
@@ -42,7 +42,8 @@ export default function Stats({
 }: StatsProps) {
   return (
     <Section className={className}>
-      <div className="container mx-auto max-w-[960px]">
+      <div className="glass-3 relative container mx-auto max-w-[1128px] rounded-[calc(var(--radius)+1rem)] border-x-0 border-b-0 to-transparent px-24 py-16">
+        <hr className="via-muted-foreground/30 absolute top-0 left-[10%] h-[1px] w-[80%] border-0 bg-linear-to-r from-transparent to-transparent" />
         {items !== false && items.length > 0 && (
           <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
             {items.map((item, index) => (

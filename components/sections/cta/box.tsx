@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
+import { Badge } from "../../ui/badge";
 import { Button, buttonVariants } from "../../ui/button";
-import Glow from "../../ui/glow";
 import { Section } from "../../ui/section";
 
 interface CTAButtonProps {
@@ -16,16 +16,20 @@ interface CTAButtonProps {
 }
 
 interface CTAProps {
+  badgeText?: string;
   title?: string;
+  description?: string;
   buttons?: CTAButtonProps[] | false;
   className?: string;
 }
 
 export default function CTA({
-  title = "Start building",
+  badgeText = "Get started",
+  title = "Start building with Launch UI",
+  description = "Get started with Launch UI and build your landing page in no time",
   buttons = [
     {
-      href: "https://www.launchuicomponents.com/",
+      href: "#",
       text: "Get Started",
       variant: "default",
     },
@@ -33,11 +37,13 @@ export default function CTA({
   className,
 }: CTAProps) {
   return (
-    <Section className={cn("group relative overflow-hidden", className)}>
-      <div className="max-w-container relative z-10 mx-auto flex flex-col items-center gap-6 text-center sm:gap-8">
-        <h2 className="max-w-[640px] text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
-          {title}
-        </h2>
+    <Section className={cn("w-full overflow-hidden pt-0 md:pt-0", className)}>
+      <div className="max-w-container relative mx-auto flex flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
+        <Badge variant="outline">
+          <span className="text-muted-foreground">{badgeText}</span>
+        </Badge>
+        <h2 className="text-3xl font-semibold sm:text-5xl">{title}</h2>
+        {description && <p className="text-muted-foreground">{description}</p>}
         {buttons !== false && buttons.length > 0 && (
           <div className="flex justify-center gap-4">
             {buttons.map((button, index) => (
@@ -56,9 +62,7 @@ export default function CTA({
             ))}
           </div>
         )}
-      </div>
-      <div className="absolute top-0 left-0 h-full w-full translate-y-[1rem] opacity-80 transition-all duration-500 ease-in-out group-hover:translate-y-[-2rem] group-hover:opacity-100">
-        <Glow variant="bottom" />
+        <div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-[0_-16px_128px_0_var(--brand-foreground)_inset,0_-16px_32px_0_var(--brand)_inset]"></div>
       </div>
     </Section>
   );

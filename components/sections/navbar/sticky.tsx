@@ -11,7 +11,6 @@ import {
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
-import Navigation from "../../ui/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 
 interface NavbarLink {
@@ -34,37 +33,37 @@ interface NavbarProps {
   homeUrl?: string;
   mobileLinks?: NavbarLink[];
   actions?: NavbarActionProps[];
-  showNavigation?: boolean;
-  customNavigation?: ReactNode;
   className?: string;
 }
 
 export default function Navbar({
   logo = <LaunchUI />,
   name = "Launch UI",
-  homeUrl = "https://www.launchuicomponents.com/",
+  homeUrl = "#",
   mobileLinks = [
-    { text: "Getting Started", href: "https://www.launchuicomponents.com/" },
-    { text: "Components", href: "https://www.launchuicomponents.com/" },
-    { text: "Documentation", href: "https://www.launchuicomponents.com/" },
+    { text: "Getting Started", href: "#" },
+    { text: "Components", href: "#" },
+    { text: "Documentation", href: "#" },
   ],
   actions = [
-    { text: "Sign in", href: "https://www.launchuicomponents.com/", isButton: false },
+    { text: "Sign in", href: "#", isButton: false },
     {
       text: "Get Started",
-      href: "https://www.launchuicomponents.com/",
+      href: "#",
       isButton: true,
       variant: "default",
     },
   ],
-  showNavigation = true,
-  customNavigation,
   className,
 }: NavbarProps) {
   return (
-    <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
-      <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
-      <div className="max-w-container relative mx-auto">
+    <header
+      className={cn(
+        "fade-bottom sticky top-0 z-50 px-4 pb-4 backdrop-blur-lg",
+        className,
+      )}
+    >
+      <div className="max-w-container mx-auto">
         <NavbarComponent>
           <NavbarLeft>
             <a
@@ -74,7 +73,6 @@ export default function Navbar({
               {logo}
               {name}
             </a>
-            {showNavigation && (customNavigation || <Navigation />)}
           </NavbarLeft>
           <NavbarRight>
             {actions.map((action, index) =>

@@ -2,14 +2,12 @@ import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
 import {
   Footer,
   FooterBottom,
   FooterColumn,
   FooterContent,
 } from "../../ui/footer";
-import { ModeToggle } from "../../ui/mode-toggle";
 
 interface FooterLink {
   text: string;
@@ -27,44 +25,26 @@ interface FooterProps {
   columns?: FooterColumnProps[];
   copyright?: string;
   policies?: FooterLink[];
-  showModeToggle?: boolean;
   className?: string;
 }
 
 export default function FooterSection({
-  logo = <LaunchUI />,
-  name = "Launch UI",
+  logo = "Logo",
+  name = "",
   columns = [
     {
-      title: "Product",
+      title: "Column Heading",
       links: [
-        { text: "Changelog", href: "https://www.launchuicomponents.com/" },
-        { text: "Documentation", href: "https://www.launchuicomponents.com/" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { text: "About", href: "https://www.launchuicomponents.com/" },
-        { text: "Careers", href: "https://www.launchuicomponents.com/" },
-        { text: "Blog", href: "https://www.launchuicomponents.com/" },
-      ],
-    },
-    {
-      title: "Contact",
-      links: [
-        { text: "Discord", href: "https://www.launchuicomponents.com/" },
-        { text: "Twitter", href: "https://www.launchuicomponents.com/" },
-        { text: "Github", href: "https://www.launchuicomponents.com/" },
+        { text: "Link 1", href: "#" },
+        { text: "Link 2", href: "#" },
       ],
     },
   ],
-  copyright = "© 2025 Mikołaj Dobrucki. All rights reserved",
+  copyright = "© 2025 Company Name. All rights reserved",
   policies = [
-    { text: "Privacy Policy", href: "https://www.launchuicomponents.com/" },
-    { text: "Terms of Service", href: "https://www.launchuicomponents.com/" },
+    { text: "Link 1", href: "#" },
+    { text: "Link 2", href: "#" },
   ],
-  showModeToggle = true,
   className,
 }: FooterProps) {
   return (
@@ -75,7 +55,7 @@ export default function FooterSection({
             <FooterColumn className="col-span-2 sm:col-span-3 md:col-span-1">
               <div className="flex items-center gap-2">
                 {logo}
-                <h3 className="text-xl font-bold">{name}</h3>
+                {name && <h3 className="text-xl font-bold">{name}</h3>}
               </div>
             </FooterColumn>
             {columns.map((column, index) => (
@@ -101,7 +81,6 @@ export default function FooterSection({
                   {policy.text}
                 </a>
               ))}
-              {showModeToggle && <ModeToggle />}
             </div>
           </FooterBottom>
         </Footer>

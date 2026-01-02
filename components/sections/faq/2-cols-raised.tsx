@@ -2,13 +2,13 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 
+import { Section } from "../../ui/section";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../ui/accordion";
-import { Section } from "../../ui/section";
+} from "../../ui/accordion-raised";
 
 interface FAQItemProps {
   question: string;
@@ -147,8 +147,8 @@ export default function FAQ({
 }: FAQProps) {
   return (
     <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-8">
-        <h2 className="text-center text-3xl font-semibold sm:text-5xl">
+      <div className="max-w-container mx-auto flex flex-col items-center gap-8 md:flex-row md:items-start">
+        <h2 className="text-center text-3xl leading-tight font-semibold sm:text-5xl md:text-left md:leading-tight">
           {title}
         </h2>
         {items !== false && items.length > 0 && (

@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
+import Github from "../../logos/github";
 import LaunchUI from "../../logos/launch-ui";
 import {
   Footer,
@@ -9,7 +11,8 @@ import {
   FooterColumn,
   FooterContent,
 } from "../../ui/footer";
-import { ModeToggle } from "../../ui/mode-toggle";
+import Discord from "../../logos/discord";
+import X from "../../logos/x";
 
 interface FooterLink {
   text: string;
@@ -21,13 +24,18 @@ interface FooterColumnProps {
   links: FooterLink[];
 }
 
+interface SocialLink {
+  icon: ReactNode;
+  href: string;
+  label: string;
+}
+
 interface FooterProps {
   logo?: ReactNode;
   name?: string;
   columns?: FooterColumnProps[];
   copyright?: string;
-  policies?: FooterLink[];
-  showModeToggle?: boolean;
+  socials?: SocialLink[];
   className?: string;
 }
 
@@ -38,44 +46,76 @@ export default function FooterSection({
     {
       title: "Product",
       links: [
-        { text: "Changelog", href: "https://www.launchuicomponents.com/" },
-        { text: "Documentation", href: "https://www.launchuicomponents.com/" },
+        { text: "Changelog", href: "#" },
+        { text: "Documentation", href: "#" },
       ],
     },
     {
       title: "Company",
       links: [
-        { text: "About", href: "https://www.launchuicomponents.com/" },
-        { text: "Careers", href: "https://www.launchuicomponents.com/" },
-        { text: "Blog", href: "https://www.launchuicomponents.com/" },
+        { text: "About", href: "#" },
+        { text: "Careers", href: "#" },
+        { text: "Blog", href: "#" },
       ],
     },
     {
       title: "Contact",
       links: [
-        { text: "Discord", href: "https://www.launchuicomponents.com/" },
-        { text: "Twitter", href: "https://www.launchuicomponents.com/" },
+        { text: "Discord", href: "#" },
+        { text: "Twitter", href: "#" },
         { text: "Github", href: "https://www.launchuicomponents.com/" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { text: "Privacy Policy", href: "#" },
+        { text: "Terms of Service", href: "#" },
+        { text: "Cookie Policy", href: "#" },
       ],
     },
   ],
   copyright = "© 2025 Mikołaj Dobrucki. All rights reserved",
-  policies = [
-    { text: "Privacy Policy", href: "https://www.launchuicomponents.com/" },
-    { text: "Terms of Service", href: "https://www.launchuicomponents.com/" },
+  socials = [
+    {
+      icon: <Github className="size-5" />,
+      href: "https://www.launchuicomponents.com/",
+      label: "GitHub",
+    },
+    {
+      icon: <X className="size-5" />,
+      href: "https://www.launchuicomponents.com/",
+      label: "Twitter",
+    },
+    {
+      icon: <Discord className="size-5" />,
+      href: "/",
+      label: "Discord",
+    },
   ],
-  showModeToggle = true,
   className,
 }: FooterProps) {
   return (
     <footer className={cn("bg-background w-full px-4", className)}>
       <div className="max-w-container mx-auto">
-        <Footer>
-          <FooterContent>
-            <FooterColumn className="col-span-2 sm:col-span-3 md:col-span-1">
+        <Footer className="border-border dark:border-border/15 border-t pt-8">
+          <FooterContent className="sm:grid-cols-2 md:grid-cols-3">
+            <FooterColumn className="col-span-2 flex-row items-center justify-between gap-8 border-b pb-8 md:col-span-1 md:flex-col md:items-start md:justify-start md:border-b-0">
               <div className="flex items-center gap-2">
                 {logo}
                 <h3 className="text-xl font-bold">{name}</h3>
+              </div>
+              <div className="ml-2.5 flex gap-4 sm:ml-0">
+                {socials.map((social, index) => (
+                  <Link
+                    key={index}
+                    href={social.href}
+                    className="text-muted-foreground"
+                  >
+                    <span className="sr-only">{social.label}</span>
+                    {social.icon}
+                  </Link>
+                ))}
               </div>
             </FooterColumn>
             {columns.map((column, index) => (
@@ -93,16 +133,8 @@ export default function FooterSection({
               </FooterColumn>
             ))}
           </FooterContent>
-          <FooterBottom>
+          <FooterBottom className="border-0">
             <div>{copyright}</div>
-            <div className="flex items-center gap-4">
-              {policies.map((policy, index) => (
-                <a key={index} href={policy.href}>
-                  {policy.text}
-                </a>
-              ))}
-              {showModeToggle && <ModeToggle />}
-            </div>
           </FooterBottom>
         </Footer>
       </div>

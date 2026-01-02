@@ -2,12 +2,15 @@ import { User, Users } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { PricingColumn, PricingColumnProps } from "../../ui/pricing-column";
+import {
+  PricingColumn,
+  PricingColumnProps,
+} from "../../ui/pricing-column";
 import { Section } from "../../ui/section";
 
 interface PricingProps {
-  title?: string | false;
-  description?: string | false;
+  title?: string;
+  description?: string;
   plans?: PricingColumnProps[] | false;
   className?: string;
 }
@@ -16,24 +19,6 @@ export default function Pricing({
   title = "Build your dream landing page, today.",
   description = "Get lifetime access to all the components. No recurring fees. Just simple, transparent pricing.",
   plans = [
-    {
-      name: "Free",
-      description: "For everyone starting out on a website for their big idea",
-      price: 0,
-      priceNote: "Free and open-source forever.",
-      cta: {
-        variant: "glow",
-        label: "Get started for free",
-        href: "/docs/getting-started/introduction",
-      },
-      features: [
-        "1 website template",
-        "9 blocks and sections",
-        "4 custom animations",
-      ],
-      variant: "default",
-      className: "hidden lg:flex",
-    },
     {
       name: "Pro",
       icon: <User className="size-4" />,
@@ -60,7 +45,7 @@ export default function Pricing({
       price: 749,
       priceNote: "Lifetime access. Free updates. No recurring fees.",
       cta: {
-        variant: "default",
+        variant: "glow",
         label: "Get all-access for your team",
         href: "https://www.launchuicomponents.com/",
       },
@@ -70,27 +55,21 @@ export default function Pricing({
       variant: "glow",
     },
   ],
-  className = "",
+  className,
 }: PricingProps) {
   return (
     <Section className={cn(className)}>
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-12">
-        {(title || description) && (
-          <div className="flex flex-col items-center gap-4 px-4 text-center sm:gap-8">
-            {title && (
-              <h2 className="text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
-                {title}
-              </h2>
-            )}
-            {description && (
-              <p className="text-md text-muted-foreground max-w-[600px] font-medium sm:text-xl">
-                {description}
-              </p>
-            )}
-          </div>
-        )}
+        <div className="flex flex-col items-center gap-4 px-4 text-center sm:gap-8">
+          <h2 className="text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
+            {title}
+          </h2>
+          <p className="text-md text-muted-foreground max-w-[600px] font-medium sm:text-xl">
+            {description}
+          </p>
+        </div>
         {plans !== false && plans.length > 0 && (
-          <div className="max-w-container mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
             {plans.map((plan) => (
               <PricingColumn
                 key={plan.name}
@@ -102,7 +81,6 @@ export default function Pricing({
                 cta={plan.cta}
                 features={plan.features}
                 variant={plan.variant}
-                className={plan.className}
               />
             ))}
           </div>
