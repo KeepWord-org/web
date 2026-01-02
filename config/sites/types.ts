@@ -150,9 +150,15 @@ export interface SiteSectionsConfig {
   footer: FooterConfig;
   
   // Content sections (optional, role-dependent)
+  // Singular variants for backward compatibility
   text?: TextConfig;
-  faq?: FAQConfig;
   feature?: FeatureConfig;
+  
+  // Plural variants for multiple sections
+  textBlocks?: TextConfig[];
+  features?: FeatureConfig[];
+  
+  faq?: FAQConfig;
   tabs?: TabsConfig;
   gallery?: GalleryConfig;
   

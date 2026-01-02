@@ -19,11 +19,13 @@ export const CORE_SECTIONS = [
 
 // ✅ CONDITIONEEL TOEGESTAAN (content sections)
 export const CONTENT_SECTIONS = [
-  'text',    // Text/content blocks
-  'faq',     // FAQ (informatief, geen marketing)
-  'feature', // Feature showcase (documentary tone)
-  'tabs',    // Tabbed content
-  'gallery', // Image gallery (documentary/proof)
+  'text',       // Text/content blocks (singular)
+  'textBlocks', // Text/content blocks (plural - multiple blocks)
+  'faq',        // FAQ (informatief, geen marketing)
+  'feature',    // Feature showcase (singular)
+  'features',   // Feature showcase (plural - multiple feature sets)
+  'tabs',       // Tabbed content
+  'gallery',    // Image gallery (documentary/proof)
 ] as const;
 
 // ⚠️ ALLEEN VOOR LOCAL DOMAIN (.nl)
@@ -90,14 +92,16 @@ export const ROLE_CONSTRAINTS: Record<FoundationRole, RoleConstraints> = {
       'navbar',
       'hero',
       'text',
+      'textBlocks', // Plural variant of text
       'footer',
       // Content sections (optioneel, alleen als informatief)
       'faq',
-      'feature', // Documentary feature showcase
+      'feature', // Documentary feature showcase (singular)
+      'features', // Documentary feature showcase (plural)
       'gallery', // Proof/documentation
     ],
     maxCTAs: 0, // Geen CTAs - puur informatief
-    allowedContentSections: ['text', 'faq', 'feature', 'gallery'],
+    allowedContentSections: ['text', 'textBlocks', 'faq', 'feature', 'features', 'gallery'],
   },
   european: {
     role: 'european',
@@ -107,13 +111,15 @@ export const ROLE_CONSTRAINTS: Record<FoundationRole, RoleConstraints> = {
       'navbar',
       'hero',
       'text',
+      'textBlocks', // Plural variant of text
       'footer',
       'faq',
       'tabs', // Policy sections/tabs
-      'feature', // Policy features
+      'feature', // Policy features (singular)
+      'features', // Policy features (plural)
     ],
     maxCTAs: 0, // Geen CTAs - policy/documentary
-    allowedContentSections: ['text', 'faq', 'tabs', 'feature'],
+    allowedContentSections: ['text', 'textBlocks', 'faq', 'tabs', 'feature', 'features'],
   },
   local: {
     role: 'local',
@@ -123,13 +129,15 @@ export const ROLE_CONSTRAINTS: Record<FoundationRole, RoleConstraints> = {
       'navbar',
       'hero',
       'text',
+      'textBlocks', // Plural variant of text
       'cta', // ALLEEN voor local domain
       'footer',
       'faq',
-      'feature',
+      'feature', // Singular
+      'features', // Plural
     ],
     maxCTAs: 1, // Max 1 CTA: "meedoen" only
-    allowedContentSections: ['text', 'faq', 'feature'],
+    allowedContentSections: ['text', 'textBlocks', 'faq', 'feature', 'features'],
   },
 };
 
