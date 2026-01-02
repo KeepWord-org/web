@@ -20,6 +20,12 @@ interface FeatureListProps extends FeatureConfig {
  */
 const getFeatureIcon = (featureTitle: string): ReactNode => {
   const iconMap: Record<string, ReactNode> = {
+    // New simplified titles
+    'Keep promises, not posts': <FileCheckIcon className="size-5 stroke-1" />,
+    'Small groups work better': <UsersIcon className="size-5 stroke-1" />,
+    'Show what happens, help fix problems': <EyeIcon className="size-5 stroke-1" />,
+    'No likes, no tricks': <MinusIcon className="size-5 stroke-1" />,
+    // Legacy titles (backward compatibility)
     'Commitment over content': <FileCheckIcon className="size-5 stroke-1" />,
     'Human-scale by design': <UsersIcon className="size-5 stroke-1" />,
     'Consequence without punishment': <EyeIcon className="size-5 stroke-1" />,

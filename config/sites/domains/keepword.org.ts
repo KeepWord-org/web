@@ -36,6 +36,16 @@ export const keepwordOrgConfig: SiteConfig = {
       name: 'KeepWord',
       mobileLinks: [
         { text: 'Mission', href: '/mission' },
+        { text: 'Vision', href: '/vision' },
+        { text: 'Problem', href: '/problem' },
+        { text: 'Approach', href: '/approach' },
+        { text: 'Governance', href: '/governance' },
+        { text: 'SDG', href: '/sdg' },
+        { text: 'Roadmap', href: '/roadmap' },
+      ],
+      desktopLinks: [
+        { text: 'Mission', href: '/mission' },
+        { text: 'Vision', href: '/vision' },
         { text: 'Problem', href: '/problem' },
         { text: 'Approach', href: '/approach' },
         { text: 'Governance', href: '/governance' },
@@ -50,9 +60,9 @@ export const keepwordOrgConfig: SiteConfig = {
 
     hero: {
       ...baseUIConfig.sections.hero,
-      title: 'Alternatives to systems that make words cheap.',
+      title: 'Keeping words meaningful in a digital world.',
       description:
-        'Social media lets people talk to many, but without taking responsibility. KeepWord explores how online tools can help people keep their word and build trust in small groups.',
+        'Social media make it easy to speak, but hard to stay accountable. KeepWord is a non-profit foundation exploring ways to reconnect words with responsibility, trust and follow-through.',
       // No buttons on keepword.org
       mockup: false,
     },

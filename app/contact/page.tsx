@@ -12,18 +12,8 @@ export default async function ContactPage() {
         </h1>
         <div className="flex flex-col gap-6 max-w-[640px] mx-auto text-center">
           <p className="text-md text-muted-foreground font-medium text-balance sm:text-xl">
-            To partner with us, work on research together, or discuss testing ideas:
+            To partner with us, work on research together, or discuss testing ideas, please visit our contact page.
           </p>
-          {config.links.email && (
-            <p className="text-md text-foreground font-medium sm:text-xl">
-              <a 
-                href={config.links.email}
-                className="underline hover:no-underline"
-              >
-                {config.links.email.replace('mailto:', '')}
-              </a>
-            </p>
-          )}
           <p className="text-md text-muted-foreground font-medium italic sm:text-xl">
             (KeepWord does not accept marketing or growth proposals.)
           </p>

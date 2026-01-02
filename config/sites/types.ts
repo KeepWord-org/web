@@ -47,6 +47,7 @@ export interface NavbarConfig {
   name: string;
   homeUrl: string;
   mobileLinks: Array<{ text: string; href: string }>;
+  desktopLinks?: Array<{ text: string; href: string }>; // Optional separate desktop links
   actions: Array<{
     text: string;
     href: string;
@@ -54,6 +55,7 @@ export interface NavbarConfig {
     variant?: 'default' | 'outline'; // 'glow' removed - too product-y
   }>;
   showNavigation?: boolean;
+  logo?: ReactNode;
 }
 
 export interface HeroConfig {

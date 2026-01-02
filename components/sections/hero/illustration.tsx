@@ -2,10 +2,8 @@ import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
 import RisingIllustration from "../../illustrations/rising-small";
-import { Input } from "../../ui/input";
 
 interface HeroProps {
   title?: string;
@@ -18,23 +16,7 @@ interface HeroProps {
 export default function Hero({
   title = "Give your big idea the design it deserves",
   description = "Professionally designed blocks and templates built with React, Shadcn/ui and Tailwind that will help your product stand out.",
-  form = (
-    <>
-      <form className="flex w-full max-w-[420px] gap-2">
-        <Input
-          type="email"
-          placeholder="Email address"
-          className="border-border/10 bg-foreground/10 grow"
-        />
-        <Button variant="default" size="lg" asChild>
-          <a href="https://www.launchuicomponents.com/">Get Started</a>
-        </Button>
-      </form>
-      <p className="text-muted-foreground text-xs">
-        Free and open source forever.
-      </p>
-    </>
-  ),
+  form = false,
   className,
   illustration = <RisingIllustration />,
 }: HeroProps) {

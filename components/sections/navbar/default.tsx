@@ -1,17 +1,17 @@
 import { type VariantProps } from "class-variance-authority";
 import { Menu } from "lucide-react";
 import { ReactNode } from "react";
+import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
 import { Button, buttonVariants } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
-import Navigation from "../../ui/navigation";
+import KeepWordNavigation from "./keepword-navigation";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 
 interface NavbarLink {
@@ -33,6 +33,7 @@ interface NavbarProps {
   name?: string;
   homeUrl?: string;
   mobileLinks?: NavbarLink[];
+  desktopLinks?: NavbarLink[];
   actions?: NavbarActionProps[];
   showNavigation?: boolean;
   customNavigation?: ReactNode;
@@ -40,41 +41,42 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  logo = <LaunchUI />,
-  name = "Launch UI",
-  homeUrl = "https://www.launchuicomponents.com/",
-  mobileLinks = [
-    { text: "Getting Started", href: "https://www.launchuicomponents.com/" },
-    { text: "Components", href: "https://www.launchuicomponents.com/" },
-    { text: "Documentation", href: "https://www.launchuicomponents.com/" },
-  ],
-  actions = [
-    { text: "Sign in", href: "https://www.launchuicomponents.com/", isButton: false },
-    {
-      text: "Get Started",
-      href: "https://www.launchuicomponents.com/",
-      isButton: true,
-      variant: "default",
-    },
-  ],
+  logo,
+  name = "KeepWord",
+  homeUrl = "/",
+  mobileLinks = [],
+  desktopLinks = [],
+  actions = [],
   showNavigation = true,
   customNavigation,
   className,
 }: NavbarProps) {
+  // Use desktopLinks if provided, otherwise fall back to mobileLinks
+  const navigationLinks = desktopLinks.length > 0 ? desktopLinks : mobileLinks;
+  
   return (
     <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
       <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
       <div className="max-w-container relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
-            <a
+            <Link
               href={homeUrl}
               className="flex items-center gap-2 text-xl font-bold"
             >
               {logo}
               {name}
-            </a>
-            {showNavigation && (customNavigation || <Navigation />)}
+            </Link>
+            {showNavigation && (
+              customNavigation || (
+                <KeepWordNavigation
+                  logo={logo}
+                  name={name}
+                  homeUrl={homeUrl}
+                  links={navigationLinks}
+                />
+              )
+            )}
           </NavbarLeft>
           <NavbarRight>
             {actions.map((action, index) =>
@@ -84,20 +86,20 @@ export default function Navbar({
                   variant={action.variant || "default"}
                   asChild
                 >
-                  <a href={action.href}>
+                  <Link href={action.href}>
                     {action.icon}
                     {action.text}
                     {action.iconRight}
-                  </a>
+                  </Link>
                 </Button>
               ) : (
-                <a
+                <Link
                   key={index}
                   href={action.href}
-                  className="hidden text-sm md:block"
+                  className="hidden text-sm md:block text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {action.text}
-                </a>
+                </Link>
               ),
             )}
             <Sheet>
@@ -113,20 +115,21 @@ export default function Navbar({
               </SheetTrigger>
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
-                  <a
+                  <Link
                     href={homeUrl}
                     className="flex items-center gap-2 text-xl font-bold"
                   >
+                    {logo}
                     <span>{name}</span>
-                  </a>
+                  </Link>
                   {mobileLinks.map((link, index) => (
-                    <a
+                    <Link
                       key={index}
                       href={link.href}
-                      className="text-muted-foreground hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.text}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </SheetContent>
