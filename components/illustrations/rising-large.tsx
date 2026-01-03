@@ -8,23 +8,23 @@ function RisingLargeIllustration() {
       data-slot="rising-large-illustration"
       className="group relative w-full pt-[50%]"
     >
-      <div className="border-brand bg-background/50 absolute top-0 left-0 z-10 w-full overflow-hidden rounded-[100%] border-4 pt-[100%] shadow-[0px_0px_12px_var(--brand),_0px_0px_64px_var(--brand-foreground),0px_0px_12px_var(--brand)_inset]">
+      <div className="border-brand/50 dark:border-brand/50 bg-background/50 absolute top-0 left-0 z-10 w-full overflow-hidden rounded-[100%] border-4 pt-[100%] shadow-[0px_0px_12px_var(--brand),0px_0px_48px_var(--brand),0px_0px_12px_var(--brand)_inset] dark:shadow-[0px_0px_12px_var(--brand),0px_0px_48px_var(--brand),0px_0px_12px_var(--brand)_inset]">
         <div
-          className="bg-brand-foreground/50 absolute top-0 left-0 h-full w-full rounded-[100%]"
+          className="bg-brand/30 dark:bg-brand/20 absolute top-0 left-0 h-full w-full rounded-[100%]"
           style={{
             maskImage:
               "radial-gradient(140% 95%, transparent 0%, transparent 35%, black 55%)",
           }}
         />
         <div
-          className="bg-brand/50 absolute top-0 left-0 h-full w-full translate-y-[-1rem] rounded-[100%] opacity-80 transition-all duration-1000 ease-in-out group-hover:translate-y-0 group-hover:opacity-100"
+          className="bg-brand/40 dark:bg-brand/25 absolute top-0 left-0 h-full w-full translate-y-[-1rem] rounded-[100%] opacity-80 transition-all duration-1000 ease-in-out group-hover:translate-y-0 group-hover:opacity-100"
           style={{
             maskImage:
               "radial-gradient(140% 110%, transparent 0%, transparent 35%, black 55%)",
           }}
         />
         <div
-          className="bg-brand absolute top-0 left-0 h-full w-full translate-y-[-1rem] rounded-[100%] opacity-80 transition-all duration-1000 ease-in-out group-hover:translate-y-0 group-hover:opacity-100 dark:bg-white"
+          className="bg-brand/60 dark:bg-brand/40 absolute top-0 left-0 h-full w-full translate-y-[-1rem] rounded-[100%] opacity-80 transition-all duration-1000 ease-in-out group-hover:translate-y-0 group-hover:opacity-100"
           style={{
             maskImage:
               "radial-gradient(140% 120%, transparent 0%, transparent 38%, black 43%)",

@@ -17,7 +17,6 @@ export default async function Home() {
   
   return (
     <main className="bg-background text-foreground min-h-screen w-full">
-      <LayoutLines />
       <Navbar {...config.sections.navbar} />
       <Hero {...config.sections.hero} />
       
